@@ -17,7 +17,7 @@ export default function Home() {
             </h1>
             <p className="text-2xl font-medium text-gray-600 max-w-2xl mx-auto mt-8">
               Your ultimate launchpad for building modern Web3 applications with{" "}
-              <span className="font-bold text-gray-900">Next.js 14</span> and{" "}
+              <span className="font-bold text-gray-900">Next.js 15</span> and{" "}
               <span className="font-bold text-gray-900">RainbowKit</span>
             </p>
           </div>
@@ -36,7 +36,7 @@ export default function Home() {
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900">Next.js 15</h3>
                 <p className="text-gray-600 text-lg leading-relaxed">
-                  Built on Next.js 14 with App Router, Server Components, and
+                  Built on Next.js 15 with App Router, Server Components, and
                   React Server Components for optimal performance.
                 </p>
               </div>
@@ -106,7 +106,7 @@ export default function Home() {
           <p className="flex items-center justify-center space-x-2 text-lg">
             <span className="text-gray-600">Built with</span>
             <span
-              className="inline-block animate-bounce text-red-500"
+              className="inline-block text-red-500"
               role="img"
               aria-label="love"
             >

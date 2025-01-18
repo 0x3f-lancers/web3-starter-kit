@@ -6,6 +6,18 @@ const nextConfig = {
     config.externals.push('pino-pretty', 'lokijs', 'encoding', { 'node-gyp-build': 'commonjs node-gyp-build' });
     return config;
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "*"
+      },
+      {
+        protocol: "http",
+        hostname: "*"
+      }
+    ]
+  }
 };
 
 module.exports = nextConfig

@@ -1,6 +1,10 @@
 "use client";
-import { ConnectButton } from "@rainbow-me/rainbowkit";
+
 import Link from "next/link";
+import {
+  ConnectButtonWithHook,
+  ConnectButton,
+} from "./components/connectButtons";
 
 export default function Home() {
   return (
@@ -17,8 +21,10 @@ export default function Home() {
             </h1>
             <p className="text-2xl font-medium text-gray-600 max-w-2xl mx-auto mt-8">
               Your ultimate launchpad for building modern Web3 applications with{" "}
-              <span className="font-bold text-gray-900">Next.js 14</span> and{" "}
-              <span className="font-bold text-gray-900">RainbowKit</span>
+              <span className="font-bold text-gray-900">Next.js 15</span> and{" "}
+              <span className="font-bold text-gray-900">
+                Reown (Wallet Connect)
+              </span>
             </p>
           </div>
         </section>
@@ -36,7 +42,7 @@ export default function Home() {
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900">Next.js 15</h3>
                 <p className="text-gray-600 text-lg leading-relaxed">
-                  Built on Next.js 14 with App Router, Server Components, and
+                  Built on Next.js 15 with App Router, Server Components, and
                   React Server Components for optimal performance.
                 </p>
               </div>
@@ -47,9 +53,9 @@ export default function Home() {
                 <div className="w-12 h-12 bg-gray-900 rounded-2xl flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300">
                   🌐
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900">RainbowKit</h3>
+                <h3 className="text-2xl font-bold text-gray-900">ReOwn</h3>
                 <p className="text-gray-600 text-lg leading-relaxed">
-                  Seamless wallet integration with RainbowKit for the best Web3
+                  Seamless wallet integration with ReOwn for the best Web3
                   authentication experience.
                 </p>
               </div>
@@ -95,7 +101,8 @@ export default function Home() {
             <p className="text-xl text-gray-600">
               Connect your wallet and start building the future of Web3
             </p>
-            <div className="flex justify-center pt-4">
+            <div className="flex flex-col md:flex-row justify-around items-center">
+              <ConnectButtonWithHook />
               <ConnectButton />
             </div>
           </div>
@@ -106,7 +113,7 @@ export default function Home() {
           <p className="flex items-center justify-center space-x-2 text-lg">
             <span className="text-gray-600">Built with</span>
             <span
-              className="inline-block animate-bounce text-red-500"
+              className="inline-block text-red-500"
               role="img"
               aria-label="love"
             >

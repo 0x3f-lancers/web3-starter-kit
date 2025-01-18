@@ -1,12 +1,33 @@
-import { getDefaultConfig } from "@rainbow-me/rainbowkit";
-import { mainnet, sepolia } from "viem/chains";
+// config/index.tsx
 
-export const config = getDefaultConfig({
-  appName: "web3-starter-kit", // Change the appName
-  projectId: process.env.NEXT_PUBLIC_PROJECT_ID!, // Change the projectId
-  chains: [
-    mainnet,
-    ...(process.env.NEXT_PUBLIC_ENABLE_TESTNET === "true" ? [sepolia] : []),
-  ],
+import { cookieStorage, createStorage } from "@wagmi/core";
+import { WagmiAdapter } from "@reown/appkit-adapter-wagmi";
+import { mainnet, sepolia } from "@reown/appkit/networks";
+import { Loop, testLoop } from "./customChain";
+
+// Get projectId from https://cloud.reown.com
+export const projectId = process.env.NEXT_PUBLIC_PROJECT_ID;
+
+if (!projectId) {
+  throw new Error("Project ID is not defined");
+}
+
+export const networks = [
+  mainnet,
+  Loop,
+  ...(process.env.NEXT_PUBLIC_ENABLE_TESTNET === "true"
+    ? [sepolia, testLoop]
+    : []),
+];
+
+//Set up the Wagmi Adapter (Config)
+export const wagmiAdapter = new WagmiAdapter({
+  storage: createStorage({
+    storage: cookieStorage,
+  }),
   ssr: true,
+  projectId,
+  networks,
 });
+
+export const config = wagmiAdapter.wagmiConfig;

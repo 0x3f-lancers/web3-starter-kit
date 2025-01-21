@@ -1,10 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import {
-  ConnectButtonWithHook,
-  ConnectButton,
-} from "./components/connectButtons";
+import WalletConnection from "./components/Wallet/WalletConnection";
+// import WalletInterface from "./components/connectButtons";
+
+// import {
+//   ConnectButtonWithHook,
+//   ConnectButton,
+// } from "./components/connectButtons";
 
 export default function Home() {
   return (
@@ -102,8 +105,7 @@ export default function Home() {
               Connect your wallet and start building the future of Web3
             </p>
             <div className="flex flex-col md:flex-row justify-around items-center">
-              <ConnectButtonWithHook />
-              <ConnectButton />
+              <WalletConnection />
             </div>
           </div>
         </section>

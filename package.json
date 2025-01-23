@@ -10,6 +10,7 @@
     "typechain": "typechain --target ethers-v6 --out-dir types 'contracts/**/*.json'"
   },
   "dependencies": {
+    "@radix-ui/react-dialog": "^1.1.5",
     "@radix-ui/react-separator": "^1.1.1",
     "@radix-ui/react-slot": "^1.1.1",
     "@radix-ui/react-switch": "^1.1.2",

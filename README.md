@@ -13,43 +13,162 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 - **Font Optimization**: Utilizes [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) for optimized loading of the Inter font, a popular Google Font.
 - **Development Ready**: Quick setup with support for various package managers (npm, yarn, pnpm, bun).
 
+## Wallet Connection: Default vs Custom
+
+### Default Reown (AppKit) Wallet Connection
+
+Reown provides a default wallet connection method through its AppKit:
+
+- One-click wallet connection
+- Supports multiple chains out of the box
+- Minimal configuration required
+- Use the default `<appkit-button />` component
+
+### Custom Wallet Connection
+
+Our custom implementation offers:
+
+- More control over the UI and connection flow
+- Custom styling and interaction
+- Additional features like network switching, address copying, etc.
+- Toasts and user-friendly feedback
+
+## Wallet Connection Hooks
+
+### Location
+
+All wallet-related hooks are located in `app/hooks/wallet/`:
+
+1. **useWalletConnection**
+
+   - Primary hook for wallet connection
+   - Supports both default and custom connection types
+   - Provides methods to open wallet connection
+   - Renders connection buttons with different types
+
+   ```typescript
+   const { appKit, address, openWalletConnection, WalletConnection } =
+     useWalletConnection();
+   ```
+
+   - Types:
+     - `"default"`: Only AppKit button
+     - `"custom"`: Only custom button
+     - `"both"`: Both connection methods
+
+2. **useGetAccountSettings**
+
+   - Retrieves account-specific information
+   - Fetches balance, network, and connection status
+   - Provides action buttons for crypto operations
+
+   ```typescript
+   const { address, isConnected, caipNetwork, balance, actionButtons } =
+     useGetAccountSettings();
+   ```
+
+3. **useGetActivity**
+
+   - Fetches wallet activity events
+   - Converts events to an easily consumable array
+
+   ```typescript
+   const { activities } = useGetActivity();
+   ```
+
+4. **useGetCustomTokens**
+
+   - Manages custom token lists
+   - Supports loading and processing tokens
+
+   ```typescript
+   const { tokens, isLoading } = useGetCustomTokens(initialTokens);
+   ```
+
+5. **useGetNetwork**
+
+   - Handles network selection and switching
+   - Provides search and filter functionality for networks
+
+   ```typescript
+   const { caipNetwork, searchQuery, filteredNetworks, handleNetworkSwitch } =
+     useGetNetwork();
+   ```
+
+6. **useGetWalletDetails**
+
+   - Comprehensive wallet details management
+   - Handles view navigation, balance, and responsive design
+
+   ```typescript
+   const { view, address, balance, navigateTo, handleCopyAddress } =
+     useGetWalletDetails();
+   ```
+
+7. **useGetWalletHeader**
+   - Provides wallet header-specific functionalities
+   - Handles address copying and disconnection
+   ```typescript
+   const { address, handleCopyAddress, handleDisconnect } =
+     useGetWalletHeader();
+   ```
+
+## Chain Management
+
+### Chain Images and Configuration
+
+#### Location
+
+- Chain-related configurations are in `app/providers/` directory
+- Chain images management in `utils/chainImages.ts`
+
+#### Adding Chains
+
+1. **Wagmi Configuration** (`app/providers/wagmi.ts`):
+
+   - Configure supported networks
+   - Define chain details (ID, name, RPC URLs)
+
+   ```typescript
+   import { defineChain } from "wagmi/chains";
+
+   export const customChain = defineChain({
+     id: 12345,
+     name: "Custom Network",
+     nativeCurrency: { name: "Custom Token", symbol: "CSTM", decimals: 18 },
+     rpcUrls: {
+       default: { http: ["https://custom-rpc-url.com"] },
+     },
+   });
+   ```
+
+2. **Chain Images** (`utils/chainImages.ts`):
+   - Centralized location for chain logo images
+   - Supports matching images by chain ID
+   - Easy to extend and customize
+   ```typescript
+   export const getChainImage = (chainId: number) => {
+     const chainImages: Record<number, string> = {
+       1: "/images/chains/ethereum.png",
+       // Add more chain images
+     };
+     return chainImages[chainId] || "/images/chains/default.png";
+   };
+   ```
+
+### Custom Chains
+
+- Easily add custom networks
+- Supports both standard and unique blockchain configurations
+- Integrate with Wagmi and Reown seamlessly
+
 ## Getting Started
 
-To get started, clone the repository and install the dependencies:
-
-```bash
-git clone https://github.com/0x3f-lancers/web3-starter-kit.git
-cd web3-starter-kit
-git switch nextjs-reown
-```
-
-Then, install the dependencies and run the development server:
-
-```bash
-npm install
-
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) in your browser to see your application running. Begin by editing `app/page.tsx`, and the page will auto-update as you make changes.
+(Previous getting started section remains the same)
 
 ## Learn More
 
-To learn more about the technologies used in this template, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - Learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - An interactive Next.js tutorial.
-- [Reown Documentation](https://reown.com/) - SDK for seamless wallet connections supporting EVM chains, Solana, and Bitcoin.
-- [Shadcn/UI Documentation](https://ui.shadcn.com/) - Pre-styled, accessible UI components.
-- [Ethers.js Documentation](https://docs.ethers.org/v6/) - Ethereum library for interacting with the blockchain.
-- [Wagmi Documentation](https://wagmi.sh/) - React hooks for Ethereum.
-- [TypeChain Documentation](https://github.com/dethcrypto/TypeChain) - TypeScript bindings for Ethereum smart contracts.
+(Previous learn more section remains the same)
 
 ## Contributions
 

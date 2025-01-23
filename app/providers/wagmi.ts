@@ -2,7 +2,7 @@
 
 import { cookieStorage, createStorage } from "@wagmi/core";
 import { WagmiAdapter } from "@reown/appkit-adapter-wagmi";
-import { mainnet, sepolia } from "@reown/appkit/networks";
+import { mainnet, sepolia, arbitrum } from "@reown/appkit/networks";
 import { Loop, testLoop } from "./customChain";
 
 // Get projectId from https://cloud.reown.com
@@ -15,6 +15,7 @@ if (!projectId) {
 export const networks = [
   mainnet,
   Loop,
+  arbitrum,
   ...(process.env.NEXT_PUBLIC_ENABLE_TESTNET === "true"
     ? [sepolia, testLoop]
     : []),

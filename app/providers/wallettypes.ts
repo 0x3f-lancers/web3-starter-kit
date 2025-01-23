@@ -22,8 +22,8 @@ export interface CustomToken {
 
 export interface WalletHeaderProps {
   address: string;
-  balance: string;
-  network: string;
+  // network: string;
+  onCloseSheet?: () => void;
   onNetworkClick: () => void;
   onSettingsClick: () => void;
 }

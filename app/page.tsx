@@ -1,28 +1,23 @@
 "use client";
 
 import Link from "next/link";
-import WalletConnection from "./components/Wallet/WalletConnection";
-// import WalletInterface from "./components/connectButtons";
-
-// import {
-//   ConnectButtonWithHook,
-//   ConnectButton,
-// } from "./components/connectButtons";
+import { useWalletButton } from "./hooks/wallet/useWalletConnection";
 
 export default function Home() {
+  const { WalletButton } = useWalletButton();
   return (
     <main className="min-h-screen bg-gradient-to-b from-white to-gray-50">
-      <div className="mx-auto max-w-6xl px-6 py-4 space-y-32">
+      <div className="mx-auto max-w-6xl px-6 py-4 space-y-12 lg:space-y-32">
         {/* Hero Section */}
         <section className="text-center space-y-8 pt-12">
           <div className="relative">
             <div className="absolute inset-x-0 top-0 h-96 overflow-hidden blur-xl -z-10">
               <div className="absolute inset-0 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 opacity-50" />
             </div>
-            <h1 className="text-7xl font-black bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900 bg-clip-text text-transparent pb-4">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl lgx:text-7xl font-black bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900 bg-clip-text text-transparent pb-4">
               Web3 Starter Kit
             </h1>
-            <p className="text-2xl font-medium text-gray-600 max-w-2xl mx-auto mt-8">
+            <p className="text-xl sm:text-2xl font-medium text-gray-600 max-w-2xl mx-auto mt-3 lg:mt-8">
               Your ultimate launchpad for building modern Web3 applications with{" "}
               <span className="font-bold text-gray-900">Next.js 15</span> and{" "}
               <span className="font-bold text-gray-900">
@@ -34,7 +29,7 @@ export default function Home() {
 
         {/* Features Section */}
         <section className="space-y-16">
-          <h2 className="text-4xl font-bold text-center text-gray-900">
+          <h2 className="text-2xl sml:text-3xl md:text-4xl font-bold text-center text-gray-900">
             Built With Latest Tech
           </h2>
           <div className="grid md:grid-cols-2 gap-8">
@@ -98,21 +93,21 @@ export default function Home() {
         <section className="relative">
           <div className="absolute inset-0 bg-gradient-to-r from-gray-100 to-white opacity-50 -z-10" />
           <div className="text-center space-y-8 max-w-3xl mx-auto">
-            <h2 className="text-4xl font-bold text-gray-900">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900">
               Ready to Build?
             </h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-lg sm:text-xl text-gray-600">
               Connect your wallet and start building the future of Web3
             </p>
-            <div className="flex flex-col md:flex-row justify-around items-center">
-              <WalletConnection />
+            <div className="flex flex-col md:flex-row justify-center items-center">
+              <WalletButton type="both" />
             </div>
           </div>
         </section>
 
         {/* Footer */}
         <footer className="text-center space-y-3 pt-8 border-t border-gray-200">
-          <p className="flex items-center justify-center space-x-2 text-lg">
+          <p className="flex items-center justify-center space-x-2 text-sm sm:text-lg">
             <span className="text-gray-600">Built with</span>
             <span
               className="inline-block text-red-500"
@@ -131,7 +126,7 @@ export default function Home() {
               Lancers Technology
             </a>
           </p>
-          <div className="flex justify-center space-x-6">
+          <div className="flex justify-center space-x-6 text-sm sm:text-base">
             <Link
               href="https://github.com/0x3f-lancers/web3-starter-kit/fork"
               target="_blank"

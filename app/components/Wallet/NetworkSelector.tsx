@@ -446,13 +446,13 @@ import Image from "next/image";
 import { NetworkSelectorProps } from "./types";
 
 import { AppKitNetwork } from "@reown/appkit/networks";
-import { Loop, testLoop } from "@/app/providers/customChain";
+import { networks } from "@/app/providers/wagmi";
 
 const NetworkSelector: React.FC<NetworkSelectorProps> = ({ onBack }) => {
   const { caipNetwork, switchNetwork } = useAppKitNetwork();
   const [searchQuery, setSearchQuery] = useState(""); // User input
   const [debouncedQuery, setDebouncedQuery] = useState(""); // Debounced input
-  const networks = [Loop, testLoop]; // Dynamic network list
+
   const [filteredNetworks, setFilteredNetworks] = useState(networks); // Filtered networks
 
   // Step 1: Debounce the search query
@@ -541,7 +541,12 @@ const NetworkSelector: React.FC<NetworkSelectorProps> = ({ onBack }) => {
                   {/* Network Icon */}
                   <div className="relative">
                     <Image
-                      src={network.assets.imageUrl}
+                      src={
+                        network.id === caipNetwork?.id
+                          ? caipNetwork?.assets?.imageUrl ??
+                            "https://s2.coinmarketcap.com/static/img/coins/64x64/1027.png"
+                          : "https://s2.coinmarketcap.com/static/img/coins/64x64/1027.png"
+                      }
                       alt={network.name}
                       width={32}
                       height={32}

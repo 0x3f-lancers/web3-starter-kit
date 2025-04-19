@@ -113,11 +113,11 @@ const CustomTokenList: React.FC = () => {
                 {tokens.map((token, index) => (
                   <motion.div
                     key={index}
-                    className="flex items-center justify-between p-3 sm:p-4 bg-gray-100/90 dark:bg-black/50 backdrop-blur-sm rounded-xl border border-gray-200 dark:border-gray-800 hover:bg-gray-200/80 dark:hover:bg-gray-900/50 transition-colors"
+                    className="flex items-center justify-between p-3 sm:p-4 bg-black/50 backdrop-blur-sm rounded-xl border border-gray-800 hover:bg-gray-900/50 transition-colors"
                   >
                     {/* Token Icon and Details */}
                     <div className="flex items-center space-x-3 sm:space-x-4">
-                      <div className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 relative rounded-full bg-gray-200 dark:bg-gray-800 overflow-hidden">
+                      <div className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 relative rounded-full bg-gray-800 overflow-hidden">
                         <Image
                           src={token.icon}
                           alt={token.symbol}
@@ -128,24 +128,24 @@ const CustomTokenList: React.FC = () => {
                         />
                       </div>
                       <div>
-                        <div className="font-medium text-gray-800 dark:text-gray-200 text-sm sm:text-base md:text-lg">
+                        <div className="font-medium text-gray-200 text-sm sm:text-base md:text-lg">
                           {token.symbol}
                         </div>
-                        <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">
+                        <div className="text-xs sm:text-sm text-gray-400">
                           {token.balance} {token.symbol}
                         </div>
                       </div>
                     </div>
                     {/* Token Value and Change */}
                     <div className="text-right">
-                      <div className="font-medium text-gray-800 dark:text-gray-200 text-sm sm:text-base md:text-lg">
+                      <div className="font-medium text-gray-200 text-sm sm:text-base md:text-lg">
                         ${token.value}
                       </div>
                       <div
                         className={`text-xs sm:text-sm ${
                           token.change.startsWith("+")
-                            ? "text-green-600 dark:text-green-400"
-                            : "text-red-600 dark:text-red-400"
+                            ? "text-green-400"
+                            : "text-red-400"
                         }`}
                       >
                         {token.change}%
@@ -163,8 +163,8 @@ const CustomTokenList: React.FC = () => {
                 animate={{ opacity: 1 }}
                 className="text-center py-6 sm:py-8"
               >
-                <Wallet className="w-10 h-10 sm:w-12 sm:h-12 text-gray-400 dark:text-gray-600 mx-auto mb-2" />
-                <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base">
+                <Wallet className="w-10 h-10 sm:w-12 sm:h-12 text-gray-600 mx-auto mb-2" />
+                <p className="text-gray-400 text-sm sm:text-base">
                   No tokens found
                 </p>
               </motion.div>

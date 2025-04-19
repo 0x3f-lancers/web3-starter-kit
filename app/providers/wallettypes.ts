@@ -11,6 +11,8 @@ export interface Token {
   value: string;
   change: string;
   icon: string;
+  coinMarketCapId: string;
+  address?: string;
 }
 
 export interface CustomToken {
@@ -36,4 +38,26 @@ export interface CustomActivityEvent {
   type: string;
   description: string;
   timeStamp: string;
+}
+// app/config/chainTokens.ts
+export interface TokenConfig {
+  symbol: string;
+  name: string;
+  address: string; // Contract address
+  decimals: number;
+  coinMarketCapId: string; // ID for price data
+  icon: string;
+}
+
+export interface ChainConfig {
+  chainId: number;
+  name: string;
+  nativeCurrency: {
+    symbol: string;
+    name: string;
+    decimals: number;
+    coinMarketCapId: string;
+    icon: string;
+  };
+  tokens: TokenConfig[];
 }

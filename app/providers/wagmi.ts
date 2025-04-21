@@ -2,8 +2,7 @@
 
 import { cookieStorage, createStorage } from "@wagmi/core";
 import { WagmiAdapter } from "@reown/appkit-adapter-wagmi";
-import { mainnet, sepolia, arbitrum } from "@reown/appkit/networks";
-import { Loop, testLoop } from "./customChain";
+import { mainnet, sepolia, arbitrum, bsc } from "@reown/appkit/networks";
 
 // Get projectId from https://cloud.reown.com
 export const projectId = process.env.NEXT_PUBLIC_PROJECT_ID;
@@ -14,11 +13,9 @@ if (!projectId) {
 
 export const networks = [
   mainnet,
-  Loop,
   arbitrum,
-  ...(process.env.NEXT_PUBLIC_ENABLE_TESTNET === "true"
-    ? [sepolia, testLoop]
-    : []),
+  bsc,
+  ...(process.env.NEXT_PUBLIC_ENABLE_TESTNET === "true" ? [sepolia] : []),
 ];
 
 //Set up the Wagmi Adapter (Config)

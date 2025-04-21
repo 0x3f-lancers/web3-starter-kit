@@ -3,12 +3,12 @@
 import { wagmiAdapter, projectId } from "./wagmi";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { createAppKit } from "@reown/appkit/react";
-import { arbitrum, mainnet } from "@reown/appkit/networks";
+import { arbitrum, bsc, mainnet } from "@reown/appkit/networks";
 import React, { type ReactNode } from "react";
 import { cookieToInitialState, WagmiProvider, type Config } from "wagmi";
 import { Toaster } from "@/components/ui/sonner";
 import "@reown/appkit-wallet-button/react";
-import { Loop, testLoop } from "./customChain";
+// import { Loop, testLoop } from "./customChain";
 
 // Set up queryClient
 const queryClient = new QueryClient();
@@ -29,7 +29,7 @@ const metadata = {
 createAppKit({
   adapters: [wagmiAdapter],
   projectId,
-  networks: [mainnet, Loop, testLoop, arbitrum],
+  networks: [mainnet, arbitrum, bsc],
   defaultNetwork: mainnet,
   metadata: metadata,
   features: {
@@ -49,6 +49,8 @@ createAppKit({
     15551: "https://s2.coinmarketcap.com/static/img/coins/128x128/18761.png",
     14441: "https://s2.coinmarketcap.com/static/img/coins/128x128/18761.png",
     42161: "https://s2.coinmarketcap.com/static/img/coins/128x128/11841.png",
+    56: "https://s2.coinmarketcap.com/static/img/coins/128x128/1839.png",
+    11155111: "https://s2.coinmarketcap.com/static/img/coins/128x128/9721.png",
   },
   connectorImages: {
     MetaMask: "https://s2.coinmarketcap.com/static/img/coins/64x64/1027.png",

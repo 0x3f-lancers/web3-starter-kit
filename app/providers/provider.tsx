@@ -7,7 +7,6 @@ import { RainbowKitProvider } from "@rainbow-me/rainbowkit";
 import { config } from "./wagmi";
 import "@rainbow-me/rainbowkit/styles.css";
 import { customTheme } from "./customTheme";
-import { Toaster } from "@/components/ui/sonner";
 const queryClient = new QueryClient();
 
 export function Providers({ children }: { children: React.ReactNode }) {
@@ -22,15 +21,6 @@ export function Providers({ children }: { children: React.ReactNode }) {
           theme={customTheme}
         >
           {children}
-          <Toaster
-            closeButton
-            toastOptions={{
-              style: {
-                backgroundColor: "#2A2C37",
-                color: "#F6981F",
-              },
-            }}
-          />
         </RainbowKitProvider>
       </QueryClientProvider>
     </WagmiProvider>
